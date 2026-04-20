@@ -1,27 +1,77 @@
-.grid-layout{
+.grid-layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: 
-        "product-card product-card" 
-        "product-card product-card"
+        "product-card" 
+        "product-card"
+        "product-card"
+        "product-card"
     ;
     gap: 24px;
-
 }
 
 .product-card {
-    grid-area: product-card;
-    display: grid;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+/* Перша картка */
+.product-card:first-child {
+    grid-column: span 2;
+    position: relative;
+}
+
+.product-card:first-child::before {
+    content: "Хіт продажів";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #ff5252;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+/* Ховер на картку */
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Дії продукту */
+.product-actions {
+    opacity: 0;
+    transition: opacity 250ms ease-out 100ms;
+}
+
+.product-img:hover+.product-actions {
+    opacity: 1;
+}
+
+/* Кнопка "В кошик" */
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background 200ms ease, transform 200ms ease;
 
 }
 
+button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
 
-.product-card:first-child{
-    display: grid;
-    grid-column: span 2;
+button:active {
+    background: #004080;
+    transform: scale(0.95);
 }
