@@ -1,5 +1,27 @@
-.product-card{
+.grid-layout{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+        "product-card product-card" 
+        "product-card product-card"
+    ;
     gap: 24px;
+
+}
+
+.product-card {
+    grid-area: product-card;
+    display: grid;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+
+}
+
+
+.product-card:first-child{
+    display: grid;
+    grid-column: span 2;
 }
